@@ -5,8 +5,8 @@ void query_ball_point_kernel_wrapper(int b, int n, int m, float radius,
                                      int nsample, const float *new_xyz,
                                      const float *xyz, int *idx);
 
-at::Tensor ball_query(at::Tensor new_xyz, at::Tensor xyz, const float radius,
-                      const int nsample) {
+at::Tensor ball_query(at::Tensor new_xyz, at::Tensor xyz, const double radius,
+                      const int64_t nsample) {
   CHECK_CONTIGUOUS(new_xyz);
   CHECK_CONTIGUOUS(xyz);
   CHECK_IS_FLOAT(new_xyz);

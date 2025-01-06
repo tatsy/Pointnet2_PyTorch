@@ -38,7 +38,7 @@ at::Tensor gather_points(at::Tensor points, at::Tensor idx) {
 }
 
 at::Tensor gather_points_grad(at::Tensor grad_out, at::Tensor idx,
-                              const int n) {
+                              const int64_t n) {
   CHECK_CONTIGUOUS(grad_out);
   CHECK_CONTIGUOUS(idx);
   CHECK_IS_FLOAT(grad_out);
@@ -63,7 +63,7 @@ at::Tensor gather_points_grad(at::Tensor grad_out, at::Tensor idx,
 
   return output;
 }
-at::Tensor furthest_point_sampling(at::Tensor points, const int nsamples) {
+at::Tensor furthest_point_sampling(at::Tensor points, const int64_t nsamples) {
   CHECK_CONTIGUOUS(points);
   CHECK_IS_FLOAT(points);
 

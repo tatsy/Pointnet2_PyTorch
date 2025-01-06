@@ -1,6 +1,79 @@
+[project]
+name = "pointnet2"
+version = "3.0.0"
+description = "PyTorch implementation of PointNet2/PointNet++"
+readme = "README.rst"
+authors = [
+  { name = "Erik Wijmans" },
+  { name = "Tatsuya Yatagawa", email = "tatsy.mail@gmail.com" }
+]
+license = { file = "UNLICENSE" }
+requires-python = ">=3.7"
+dependencies = [
+  "torch>=1.4.0",
+  "torchvision",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "numpy",
+  "msgpack-numpy",
+  "lmdb",
+  "h5py",
+  "pytest-helpers-namespace",
+  "hydra-core==0.11.3",
+  "pytorch-lightning==0.7.1",
+]
+
+[tool.scikit-build]
+build-dir = "build"
+minimum-version = "0.10"
+ninja.make-fallback = true
+logging.level = "INFO"
+build.verbose = true
+
+[tool.scikit-build.cmake]
+version = ">=3.15"
+source-dir = "."
+args = []
+
+[tool.scikit-build.wheel]
+packages = ["pointnet2", "pointnet2_ops"]
+license-files = ["UNLICENSE"]
+exclude = [
+  "**/.mypy_cache/**",
+  "**/deps/**",
+  "**/build/**",
+  "**/boselete/**",
+  "**/.vscode/**"
+]
+
+[build-system]
+requires = [
+  "scikit-build-core>=0.10",
+  "setuptools>=42",
+  "wheel",
+  "pybind11>=2.10",
+  "cmake",
+  "ninja"
+]
+build-backend = "scikit_build_core.build"
+
 [tool.isort]
-skip_glob = ["*/deps/*", "*/build/*", "*/obselete/*"]
-known_third_party = ["h5py", "hydra", "lmdb", "msgpack_numpy", "numpy", "omegaconf", "pointnet2_ops", "pytest", "pytorch_lightning", "setuptools", "torch", "torchvision", "tqdm"]
+skip_glob = [
+  "**/.mypy_cache/**",
+  "**/deps/**",
+  "**/build/**",
+  "**/boselete/**",
+  "**/.vscode/**"
+]
+known_third_party = [
+  "h5py", "hydra", "lmdb", "msgpack_numpy",
+  "numpy", "omegaconf", "pointnet2_ops",
+  "pytest", "pytorch_lightning", "setuptools",
+  "torch", "torchvision", "tqdm"
+]
 multi_line_output = 3
 force_grid_wrap = false
 line_length = 88

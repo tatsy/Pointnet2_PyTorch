@@ -35,7 +35,7 @@ at::Tensor group_points(at::Tensor points, at::Tensor idx) {
   return output;
 }
 
-at::Tensor group_points_grad(at::Tensor grad_out, at::Tensor idx, const int n) {
+at::Tensor group_points_grad(at::Tensor grad_out, at::Tensor idx, const int64_t n) {
   CHECK_CONTIGUOUS(grad_out);
   CHECK_CONTIGUOUS(idx);
   CHECK_IS_FLOAT(grad_out);
